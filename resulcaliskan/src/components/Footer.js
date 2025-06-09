@@ -1,5 +1,5 @@
 // components/Footer.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import avatar from "../png/avatar.png"
 const Footer = () => {
   return (
@@ -20,11 +20,33 @@ const Footer = () => {
   );
 };
 
-const BackToTopButton = () => (
-  <button className="fas" id="backtotopbutton" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-    <article aria-label="Back to top">&#8592;BACK TO TOP</article>
-  </button>
-);
+const BackToTopButton = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+     setIsVisible(window.scrollY > window.innerHeight / 2);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <button
+      className="fas"
+      id="backtotopbutton"
+      onClick={scrollToTop}
+      style={{ display: isVisible ? 'flex' : 'none' }}
+    >
+      <article aria-label="Back to top">&#8592;BACK TO TOP</article>
+    </button>
+  );
+};
 
 const TwoWords = () => (
   <div className="two-words">
@@ -80,14 +102,6 @@ const SocialIcon = ({ url, ariaLabel, viewBox, path, id }) => (
 const FooterAvatar = () => (
   <div className="footer-avatar-container">
     <img src={avatar} alt="animation-head" className="footer-avatar-img" id="footer-wala-avatar" />
-    {/* <div className="footer-avatar-face">
-      <div className="footer-avatar-eye footer-left-eye">
-        <div className="footer-pupil"></div>
-      </div>
-      <div className="footer-avatar-eye footer-right-eye">
-        <div className="footer-pupil"></div>
-      </div>
-    </div> */}
   </div>
 );
 

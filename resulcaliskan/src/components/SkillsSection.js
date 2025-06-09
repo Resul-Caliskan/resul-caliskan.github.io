@@ -84,3 +84,4 @@ const SkillBox = ({ skill, delay }) => (
 );
 
 export default SkillsSection;
+
