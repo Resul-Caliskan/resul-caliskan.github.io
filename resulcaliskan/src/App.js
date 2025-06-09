@@ -5,17 +5,21 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import './style.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading
+    AOS.init({ duration: 1000, once: true });
+
+    // Preloader süresi (örn: 2 saniye)
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); // temizlik
   }, []);
 
   return (

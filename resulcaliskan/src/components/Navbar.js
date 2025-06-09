@@ -1,37 +1,39 @@
-// components/Navbar.js
-import React from 'react';
+import React, { useState } from 'react';
+import avatar from "../png/avatar.png";
 
 const Navbar = () => {
+  const [activeTab, setActiveTab] = useState("home");
+
+  const tabs = [
+    { id: "home", label: "</Home>", delay: 100 },
+    { id: "about", label: "</AboutMe>", delay: 300 },
+    { id: "skills", label: "</Skills>", delay: 500 },
+    { id: "projects", label: "</Projects>", delay: 700 },
+  ];
+
   return (
     <div className="navbar" id="navbar">
       <div className="hey">Hey!</div>
       <div className="logo" tabIndex="0" aria-label="vinod jangid logo">
         <div className="logo-top">
-          <img src="src/png/nav-avatar.png" alt="animation-head" id="nav-avatar" />
+          <img src={avatar} alt="animation-head" id="nav-avatar" />
         </div>
       </div>
       <div className="navbar-tabs" id="navbar-tabs">
         <ul className="navbar-tabs-ul">
-          <li className="home activeThistab navbar-tabs-li" data-aos="fade-down" data-aos-delay="100">
-            <a href="#home" tabIndex="0" aria-label="Home menu button">
-              &#60;/Home&#62;
-            </a>
-          </li>
-          <li className="about navbar-tabs-li" data-aos="fade-down" data-aos-delay="300">
-            <a href="#about" aria-label="about menu button">
-              &#60;/AboutMe&#62;
-            </a>
-          </li>
-          <li className="skills navbar-tabs-li" data-aos="fade-down" data-aos-delay="500">
-            <a href="#skills" aria-label="skills menu button">
-              &#60;/Skills&#62;
-            </a>
-          </li>
-          <li className="projects navbar-tabs-li" data-aos="fade-down" data-aos-delay="700">
-            <a href="#projects" aria-label="projects menu button">
-              &#60;/Projects&#62;
-            </a>
-          </li>
+          {tabs.map((tab) => (
+            <li
+              key={tab.id}
+              className={`${tab.id} navbar-tabs-li ${activeTab === tab.id ? "activeThistab" : ""}`}
+              data-aos="fade-down"
+              data-aos-delay={tab.delay}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <a href={`#${tab.id}`} tabIndex="0" aria-label={`${tab.id} menu button`}>
+                {tab.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

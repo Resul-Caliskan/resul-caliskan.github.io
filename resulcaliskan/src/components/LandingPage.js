@@ -18,7 +18,7 @@ const LandingPage = () => {
 
 const HelloFriend = () => (
   <article id="hello-friend" data-aos="fade-up" data-aos-delay="0">
-    {['H', 'e', 'l', 'l', 'o', '(', ')', ';', ' ', 'I', "'", 'm'].map((letter, index) => (
+    {['H', 'e', 'l', 'l', 'o', '(', ')', ';', '\u00A0 ', 'I', "'", 'm'].map((letter, index) => (
       <p key={index} className="jello">{letter}</p>
     ))}
   </article>
@@ -26,7 +26,7 @@ const HelloFriend = () => (
 
 const Name = () => (
   <article id="name" data-aos="fade-up" data-aos-delay="200">
-    {['R', 'e', 's', 'u', 'l', ' ', 'C', 'a', 'l', 'i', 's', 'k', 'a','n'].map((letter, index) => (
+    {['R', 'e', 's', 'u', 'l', ' \u00A0 ', 'Ç', 'a', 'l', 'ı', 'ş', 'k', 'a','n'].map((letter, index) => (
       <p key={index} className="jello">{letter}</p>
     ))}
   </article>
@@ -62,7 +62,7 @@ const InfoPara = () => (
 
 const ContactButtons = () => (
   <div className="contact-btn-div" data-aos="fade-up" data-aos-delay="800">
-    <a href="mailto:infovinodjangid@gmail.com" tabIndex="-1">
+    <a href="mailto:resulcaliskansau@gmail.com" tabIndex="-1">
       <button className="letsTalkBtn">
         <p className="letsTalkBtn-text">Let's Talk!</p>
         <span className="letsTalkBtn-BG"></span>

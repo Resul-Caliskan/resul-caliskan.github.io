@@ -1,6 +1,6 @@
 // components/AboutSection.js
 import React from 'react';
-
+import me from "../png/avatar.png"
 const AboutSection = () => {
   return (
     <section className="about-section-container" id="about" data-aos="fade-up">
@@ -9,7 +9,7 @@ const AboutSection = () => {
         <div className="info-dp-section">
           <AboutInfo />
           <div className="dp" data-aos="fade-up">
-            <img src="src/webp/vinod (2).webp" alt="Vinod Jangid" tabIndex="0" aria-label="image of vinod" />
+            <img src={me} alt="Resul Caliskan" tabIndex="0" aria-label="image of vinod" />
           </div>
         </div>
       </div>
