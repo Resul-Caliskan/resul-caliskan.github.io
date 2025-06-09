@@ -1,10 +1,12 @@
 // components/LandingPage.js
 import React from 'react';
-
+import "./hover.css"
 const LandingPage = () => {
   return (
     <section className="landing-page-container" id="home">
+    <div class="container"></div>
       <div className="blob"></div>
+      
       <div className="text-content">
         <HelloFriend />
         <Name />
@@ -12,6 +14,7 @@ const LandingPage = () => {
         <InfoPara />
         <ContactButtons />
       </div>
+      
     </section>
   );
 };

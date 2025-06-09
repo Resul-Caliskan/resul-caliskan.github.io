@@ -1,6 +1,5 @@
 // components/ProjectsSection.js
 import React from 'react';
-
 const ProjectsSection = () => {
   const projects = [
     // {
@@ -62,9 +61,12 @@ const ProjectsSection = () => {
 
   return (
     <section className="projects-section-container" id="projects">
+    
       <div className="projects-section-div">
+      
         <SectionHeading title="Projects" />
         <div className="project-boxes-div">
+        
           {projects.map((project, index) => (
             <ProjectBox key={index} project={project} />
           ))}
@@ -85,6 +87,7 @@ const SectionHeading = ({ title }) => (
 
 const ProjectBox = ({ project }) => (
   <div data-aos="fade-up" className="project-box-wrapper">
+  
     <div className="project-box project-box2">
       <div className="info-div">
         <img src={project.favicon} alt={`${project.title} website favicon`} className="faviconforProject" />

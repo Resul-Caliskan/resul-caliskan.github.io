@@ -123,7 +123,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #8000ff
+    background-color: #00ff26
 }
 
 .cursor-inner {
@@ -552,7 +552,7 @@ noscript {
     background-color: var(--color-light-purple);
     width: 600px;
     height: 100vh;
-    filter: blur(300px);
+    filter: blur(200px);
     opacity: .3;
     animation: 1s linear infinite alternate-reverse breath
 }
