@@ -6,9 +6,9 @@ const Navbar = () => {
 
   const tabs = [
     { id: "home", label: "</Home>", delay: 100 },
-    { id: "about", label: "</AboutMe>", delay: 300 },
-    { id: "skills", label: "</Skills>", delay: 500 },
-    { id: "projects", label: "</Projects>", delay: 700 },
+    { id: "about", label: "</AboutMe>", delay: 100 },
+    { id: "skills", label: "</Skills>", delay: 100 },
+    { id: "projects", label: "</Projects>", delay: 100 },
   ];
 
   return (
