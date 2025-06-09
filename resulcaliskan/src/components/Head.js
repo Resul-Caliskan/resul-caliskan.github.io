@@ -15,21 +15,20 @@ const Head = () => {
       />
       <meta
         name="keywords"
-        content="Resul Çalışkan,Resul Çalışkan portfolio,Resul Çalışkan Portfolio,vinodjangid,Resul Çalışkan site,Resul Çalışkan Site,Resul Çalışkan me,Resul Çalışkan web,Resul Çalışkan github,vinodjangid site,vinodjangid uiverse,uiverse,Resul Çalışkan uiverse,Resul Çalışkan frontend developer,frontend developer,Resul Çalışkan jaipur,vinod jaipur"
+        content="Resul Çalışkan,Resul Çalışkan portfolio,Resul Çalışkan Portfolio,ResulCaliskan,Resul Çalışkan site,Resul Çalışkan Site,Resul Çalışkan me,Resul Çalışkan web,Resul Çalışkan github,Resuljangid site,Resuljangid uiverse,uiverse,Resul Çalışkan uiverse,Resul Çalışkan frontend developer,frontend developer"
       />
       <meta name="author" content="Resul Çalışkan" />
 
       <meta property="og:title" content="Resul Çalışkan | Portfolio" />
       <meta property="og:description"
-        content="Hi! My name is Vinod. I'm a web developer and digital visual artist. Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
+        content="Hi! My name is Resul. I'm a web developer and digital visual artist. Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
       />
-      <meta property="og:url" content="https://vinodjangid.site" />
+      <meta property="og:url" content="https://resul-caliskan.github.io/" />
       <meta property="og:site_name" content="Resul Çalışkan Portfolio" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@Vinod_Jangid07" />
       <meta name="twitter:title" content="Resul Çalışkan | Portfolio" />
       <meta name="twitter:description"
-        content="Hi! My name is Vinod. I'm a web developer and digital visual artist. Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
+        content="Hi! My name is Resul. I'm a web developer and digital visual artist. Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
       />
       <title>Resul Çalışkan | Portfolio</title>
       <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
