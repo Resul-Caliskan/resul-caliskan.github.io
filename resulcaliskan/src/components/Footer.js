@@ -51,7 +51,7 @@ const BackToTopButton = () => {
 const TwoWords = () => (
   <div className="two-words">
     <article tabIndex="0" aria-label="Learning, Living, and Leveling Up, my quote">
-      "Learning, Living, and Leveling Up."
+      "Building Worlds, Breaking Limits, Becoming a Legend."
     </article>
   </div>
 );
