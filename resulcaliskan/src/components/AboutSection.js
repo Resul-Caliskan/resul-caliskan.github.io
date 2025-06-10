@@ -2,7 +2,6 @@
 import React from "react";
 import me from "../png/avatar.png";
 import "./hover.css";
-
 const AboutSection = () => {
   return (
     <section className="about-section-container" id="about" data-aos="fade-up">
@@ -22,7 +21,7 @@ const AboutSection = () => {
               <div class="infoDiv">
                 <div class="nameDiv">
                   <p class="name">Resul Çalışkan</p>
-                  <p class="role">Frontend Developer</p>
+                  <p class="role">Software Developer</p>
                 </div>
                 <div class="socialDiv">
                   <a href="https://github.com/Resul-Caliskan">
@@ -68,90 +67,57 @@ const SectionHeading = ({ title }) => (
 const AboutInfo = () => (
   <div className="about-info">
     <p tabIndex="0">
-      Hi! My name is Resul. I'm a web developer and digital visual artist. I
-      love creating things that exist on the internet. My interest in web
-      development started in 2021 when I decided to upload my digital concept
-      arts online.
+      Hello! I'm Resul — a dedicated software developer with a passion for
+      frontend, backend, and AI technologies. If I had to give myself a title,
+      it would be "Software Developer," because my core interest lies deeply in
+      the craft of coding itself.
     </p>
     <br />
     <p tabIndex="0">
-      Instead of creating an online Concepts Art website, i started enjoying web
-      development. Creating custom things for web taught me a lot about design &
-      development!
+      I actively develop projects using JavaScript, React, React Native, and
+      Python, constantly exploring how to build efficient, scalable, and
+      user-friendly applications. Besides web development, I have experience
+      creating games with Unity, which is an area I'm eager to dive deeper into
+      as it perfectly combines creativity and technical skills.
     </p>
     <br />
     <p tabIndex="0">
-      My main focus these days is building interesting & creative web designs, I
-      like to code things from scratch, and enjoy bringing ideas to life in the
-      browser.
+      Since graduating in October 2024, I haven't yet joined a corporate team,
+      but I’m very eager to be part of one to collaborate, learn, and contribute
+      in a dynamic environment. Meanwhile, I’ve embraced freelancing to sharpen
+      my skills and bring my own ideas to life.
     </p>
+    <br />
+    <p tabIndex="0">
+      I enjoy the challenge of working end-to-end—from designing sleek user
+      interfaces to implementing robust backend logic and even experimenting
+      with AI-driven features. For me, software development isn’t just about
+      writing code; it’s about crafting meaningful experiences that engage users
+      and solve real problems.
+    </p>
+    <br />
+    <p tabIndex="0">
+      I'm constantly driven by curiosity, always learning new tools and
+      techniques to improve my craft and deliver quality solutions.
+    </p>
+
     <ResumeButton />
   </div>
 );
 
 const ResumeButton = () => (
-  // <button
-  //   className="resume-btn"
-  //   id="resume-btn"
-  //   onClick={() => window.open("src/pdf/Vinod's Resume.pdf", "_blank")}
-  // >
-  //   <div className="sign">
-  //     <svg viewBox="0 0 640 512">
-  //       <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-167l80 80c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-39 39V184c0-13.3-10.7-24-24-24s-24 10.7-24 24V318.1l-39-39c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z" />
-  //     </svg>
-  //   </div>
-  //   <div className="text">Resume</div>
-  // </button>
-  <div class="relative duration-300  hover:-rotate-0 [transform:rotate3d(1_,-1,_1,_60deg)] group border border-sky-900 border-4  overflow-hidden rounded-2xl relative h-52 w-72 bg-sky-800 p-5 flex flex-col items-start gap-4">
-    <div class="text-gray-50">
-      <span class="font-bold text-5xl">Jr</span>
-      <p class="text-xs">Frontend Developer</p>
-    </div>
-    <button class="duration-300 hover:bg-sky-900 border hover:text-gray-50 bg-gray-50 font-semibold text-sky-800 px-3 py-2 flex flex-row items-center gap-3">
-      Dowload CV
-      <svg
-        y="0"
-        xmlns="http://www.w3.org/2000/svg"
-        x="0"
-        width="100"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid meet"
-        height="100"
-        class="w-6 h-6 fill-current"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M22.1,77.9a4,4,0,0,1,4-4H73.9a4,4,0,0,1,0,8H26.1A4,4,0,0,1,22.1,77.9ZM35.2,47.2a4,4,0,0,1,5.7,0L46,52.3V22.1a4,4,0,1,1,8,0V52.3l5.1-5.1a4,4,0,0,1,5.7,0,4,4,0,0,1,0,5.6l-12,12a3.9,3.9,0,0,1-5.6,0l-12-12A4,4,0,0,1,35.2,47.2Z"
-        ></path>
+  <button
+    className="resume-btn"
+    id="resume-btn"
+    onClick={() => window.open("src/pdf/Vinod's Resume.pdf", "_blank")}
+  >
+    <div className="sign">
+      <svg viewBox="0 0 640 512">
+        <path d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-167l80 80c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-39 39V184c0-13.3-10.7-24-24-24s-24 10.7-24 24V318.1l-39-39c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z" />
       </svg>
-    </button>
-
-    <svg
-      viewBox="0 0 64 64"
-      xmlns="http://www.w3.org/2000/svg"
-      class="group-hover:scale-125 duration-500 absolute -bottom-0.5 -right-20 w-48 h-48 z-10 -my-2  fill-gray-50 stroke-sky-900"
-    >
-      <path
-        stroke-width="5"
-        stroke-miterlimit="10"
-        d="M 50.4 51 C 40.5 49.1 40 46 40 44 v -1.2 a 18.9 18.9 0 0 0 5.7 -8.8 h 0.1 c 3 0 3.8 -6.3 3.8 -7.3 s 0.1 -4.7 -3 -4.7 C 53 4 30 0 22.3 6 c -5.4 0 -5.9 8 -3.9 16 c -3.1 0 -3 3.8 -3 4.7 s 0.7 7.3 3.8 7.3 c 1 3.6 2.3 6.9 4.7 9 v 1.2 c 0 2 0.5 5 -9.5 6.8 S 2 62 2 62 h 60 a 14.6 14.6 0 0 0 -11.6 -11 z"
-        data-name="layer1"
-      ></path>
-    </svg>
-
-    <svg
-      viewBox="0 0 64 64"
-      xmlns="http://www.w3.org/2000/svg"
-      class="group-hover:scale-125 duration-200 absolute -bottom-0.5 -right-20 w-48 h-48 z-10 -my-2  fill-gray-50 stroke-sky-700"
-    >
-      <path
-        stroke-width="2"
-        stroke-miterlimit="10"
-        d="M 50.4 51 C 40.5 49.1 40 46 40 44 v -1.2 a 18.9 18.9 0 0 0 5.7 -8.8 h 0.1 c 3 0 3.8 -6.3 3.8 -7.3 s 0.1 -4.7 -3 -4.7 C 53 4 30 0 22.3 6 c -5.4 0 -5.9 8 -3.9 16 c -3.1 0 -3 3.8 -3 4.7 s 0.7 7.3 3.8 7.3 c 1 3.6 2.3 6.9 4.7 9 v 1.2 c 0 2 0.5 5 -9.5 6.8 S 2 62 2 62 h 60 a 14.6 14.6 0 0 0 -11.6 -11 z"
-        data-name="layer1"
-      ></path>
-    </svg>
-  </div>
+    </div>
+    <div className="text">Resume</div>
+  </button>
 );
 
 export default AboutSection;

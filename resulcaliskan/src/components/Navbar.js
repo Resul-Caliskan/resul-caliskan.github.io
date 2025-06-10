@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import avatar from "../png/avatar.png";
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState("home");
 
