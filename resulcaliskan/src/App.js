@@ -6,7 +6,9 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
-import Projects from './pages/Projects.js'; // ✅ Projeler sayfasını ekliyoruz
+import Projects from './pages/Projects.js';
+import Blog from './pages/Blog.js'; // Blog sayfasını import et
+import Post from './pages/Post.js';   // Tekil post sayfasını import et
 import './style.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -33,6 +35,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/projeler" element={<Projects />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Post />} />
           </Routes>
           <Footer />
         </Router>

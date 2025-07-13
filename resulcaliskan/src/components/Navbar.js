@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import avatar from "../png/avatar.png";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
 const Navbar = () => {
-  const [activeTab, setActiveTab] = useState("home");
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.pathname);
 
   const tabs = [
-    { id: "home", label: "</Home>", delay: 100 },
-    { id: "about", label: "</AboutMe>", delay: 100 },
-    { id: "skills", label: "</Skills>", delay: 100 },
-    { id: "projects", label: "</Projects>", delay: 100 },
+    { id: "/", label: "</Home>", delay: 100, type: 'anchor' },
+    { id: "#about", label: "</AboutMe>", delay: 100, type: 'anchor' },
+    { id: "#skills", label: "</Skills>", delay: 100, type: 'anchor' },
+    { id: "#projects", label: "</Projects>", delay: 100, type: 'anchor' },
+    { id: "/blog", label: "</Blog>", delay: 100, type: 'link' },
   ];
+
+  const handleTabClick = (id, type) => {
+    if (type === 'link') {
+      setActiveTab(id);
+    }
+  };
 
   return (
     <div className="navbar" id="navbar">
@@ -24,14 +33,20 @@ const Navbar = () => {
           {tabs.map((tab) => (
             <li
               key={tab.id}
-              className={`${tab.id} navbar-tabs-li ${activeTab === tab.id ? "activeThistab" : ""}`}
+              className={`navbar-tabs-li ${activeTab === tab.id ? "activeThistab" : ""}`}
               data-aos="fade-down"
               data-aos-delay={tab.delay}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => handleTabClick(tab.id, tab.type)}
             >
-              <a href={`#${tab.id}`} tabIndex="0" aria-label={`${tab.id} menu button`}>
-                {tab.label}
-              </a>
+              {tab.type === 'link' ? (
+                <Link to={tab.id} tabIndex="0" aria-label={`${tab.label} menu button`}>
+                  {tab.label}
+                </Link>
+              ) : (
+                <a href={tab.id} tabIndex="0" aria-label={`${tab.label} menu button`}>
+                  {tab.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
