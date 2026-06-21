@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.31cc1015.css",
-    "main.js": "/static/js/main.f3c6410d.js",
-    "static/js/453.d523a74e.chunk.js": "/static/js/453.d523a74e.chunk.js",
+    "main.css": "/static/css/main.60d9cadc.css",
+    "main.js": "/static/js/main.a403ff92.js",
+    "static/js/453.72e1aa6a.chunk.js": "/static/js/453.72e1aa6a.chunk.js",
     "static/media/avatar.png": "/static/media/avatar.5789f625a2d8cd9875a8.png",
     "static/media/unity.png": "/static/media/unity.8559545b67ac33cf1d9a.png",
     "static/media/node.png": "/static/media/node.b23a41c40c719c277604.png",
     "static/media/clogo.png": "/static/media/clogo.fc430729bfa8902c06fd.png",
-    "static/media/Pulse-0.4s-200px.svg": "/static/media/Pulse-0.4s-200px.e7dfb19d4a05b7c0c30c.svg",
-    "static/media/settings-svgrepo-com.svg": "/static/media/settings-svgrepo-com.5d5fa643f8dda79aa2d1.svg",
+    "static/media/Pulse-0.4s-200px.svg": "/static/media/Pulse-0.4s-200px.1e5b7d8623589ece8962.svg",
+    "static/media/settings-svgrepo-com.svg": "/static/media/settings-svgrepo-com.96f8e6ba97c36406f945.svg",
     "index.html": "/index.html",
-    "static/media/Speaker_Icon.svg": "/static/media/Speaker_Icon.c81d3be72d3adbf469b7.svg",
-    "static/media/Mute_Icon.svg": "/static/media/Mute_Icon.4acafc0d47c31f66bd0a.svg",
-    "main.31cc1015.css.map": "/static/css/main.31cc1015.css.map",
-    "main.f3c6410d.js.map": "/static/js/main.f3c6410d.js.map",
-    "453.d523a74e.chunk.js.map": "/static/js/453.d523a74e.chunk.js.map"
+    "static/media/Speaker_Icon.svg": "/static/media/Speaker_Icon.fae9f0d4d64616045568.svg",
+    "static/media/Mute_Icon.svg": "/static/media/Mute_Icon.8a235fd02a88ab53d685.svg",
+    "static/media/ilk-yazim.md": "/static/media/ilk-yazim.94dbb26b298d742624b9.md",
+    "main.60d9cadc.css.map": "/static/css/main.60d9cadc.css.map",
+    "main.a403ff92.js.map": "/static/js/main.a403ff92.js.map",
+    "453.72e1aa6a.chunk.js.map": "/static/js/453.72e1aa6a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.31cc1015.css",
-    "static/js/main.f3c6410d.js"
+    "static/css/main.60d9cadc.css",
+    "static/js/main.a403ff92.js"
   ]
 }
