@@ -1,52 +1,80 @@
-import React, { useState } from 'react';
-import avatar from "../png/avatar.png";
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import avatar from '../png/avatar.png';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+const tabs = [
+  { path: '/', hash: '', label: '</Home>', delay: 100 },
+  { path: '/blog', hash: '', label: '</Blog>', delay: 100 },
+];
 
 const Navbar = () => {
   const location = useLocation();
-  const [activeTab, setActiveTab] = useState(location.pathname);
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('');
 
-  const tabs = [
-    { id: "/", label: "</Home>", delay: 100, type: 'anchor' },
-    { id: "#about", label: "</AboutMe>", delay: 100, type: 'anchor' },
-    { id: "#skills", label: "</Skills>", delay: 100, type: 'anchor' },
-    { id: "#projects", label: "</Projects>", delay: 100, type: 'anchor' },
-    { id: "/blog", label: "</Blog>", delay: 100, type: 'link' },
-  ];
+  useEffect(() => {
+    if (location.pathname.startsWith('/blog')) {
+      setActiveTab('/blog');
+    } else {
+      setActiveTab('home');
+    }
+  }, [location.pathname, location.hash]);
 
-  const handleTabClick = (id, type) => {
-    if (type === 'link') {
-      setActiveTab(id);
+  const isActive = (tab) => {
+    if (tab.path === '/blog') return activeTab === '/blog';
+    return activeTab === 'home';
+  };
+
+  const handleNav = (event, tab) => {
+    event.preventDefault();
+
+    if (tab.path === '/blog') {
+      setActiveTab('/blog');
+      navigate('/blog');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    setActiveTab('home');
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.replaceState(null, '', '/');
+    } else {
+      navigate('/');
     }
   };
 
   return (
     <div className="navbar" id="navbar">
       <div className="hey">Hey!</div>
-      <div className="logo" tabIndex="0" aria-label="vinod jangid logo">
+      <Link
+        to="/"
+        className="logo"
+        tabIndex="0"
+        aria-label="home logo"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <div className="logo-top">
           <img src={avatar} alt="animation-head" id="nav-avatar" />
         </div>
-      </div>
+      </Link>
       <div className="navbar-tabs" id="navbar-tabs">
         <ul className="navbar-tabs-ul">
           {tabs.map((tab) => (
             <li
-              key={tab.id}
-              className={`navbar-tabs-li ${activeTab === tab.id ? "activeThistab" : ""}`}
+              key={tab.label}
+              className={`navbar-tabs-li ${isActive(tab) ? 'activeThistab' : ''}`}
               data-aos="fade-down"
               data-aos-delay={tab.delay}
-              onClick={() => handleTabClick(tab.id, tab.type)}
             >
-              {tab.type === 'link' ? (
-                <Link to={tab.id} tabIndex="0" aria-label={`${tab.label} menu button`}>
-                  {tab.label}
-                </Link>
-              ) : (
-                <a href={tab.id} tabIndex="0" aria-label={`${tab.label} menu button`}>
-                  {tab.label}
-                </a>
-              )}
+              <a
+                href={tab.path}
+                tabIndex="0"
+                aria-label={`${tab.label} menu button`}
+                onClick={(event) => handleNav(event, tab)}
+              >
+                {tab.label}
+              </a>
             </li>
           ))}
         </ul>

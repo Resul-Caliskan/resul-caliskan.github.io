@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import matter from 'gray-matter';
 import { getPostBySlug } from '../posts';
+import avatar from '../png/avatar.png';
 
 const Post = () => {
   const { slug } = useParams();
@@ -39,19 +40,35 @@ const Post = () => {
       .finally(() => setLoading(false));
   }, [slug]);
 
+  const formattedDate = post.data.date
+    ? new Date(post.data.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    : '';
+
   return (
-    <section className="blog-section-container post-section-container">
-      <div className="blog-section post-section">
-        <Link to="/blog" className="blog-back-link" data-aos="fade-up">
-          ← Back to Blog
-        </Link>
+    <div className="post-page">
+      <div className="post-page-glow" aria-hidden="true" />
+
+      <div className="post-page-inner">
+        <nav className="post-nav" data-aos="fade-down">
+          <Link to="/blog" className="post-back">
+            <svg width="18" height="18" viewBox="0 0 13 10" fill="none" aria-hidden="true">
+              <path d="M12,5 L2,5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <polyline points="5 1 1 5 5 9" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span>Blog</span>
+          </Link>
+        </nav>
 
         {loading ? (
           <p className="blog-status">Loading...</p>
         ) : notFound ? (
           <div className="post-not-found" data-aos="fade-up">
-            <h1 className="section-heading-article">&#60;/404&#62;</h1>
-            <p className="blog-status">This post could not be found.</p>
+            <h1 className="post-title">Post not found</h1>
+            <p className="post-lede">This article doesn&apos;t exist or was moved.</p>
             <Link to="/blog" className="cta">
               <span>All posts</span>
               <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -61,32 +78,47 @@ const Post = () => {
             </Link>
           </div>
         ) : (
-          <article className="post-article" data-aos="fade-up">
-            <header className="post-header">
+          <article className="post-article">
+            <div className="post-hero" data-aos="fade-up">
               <h1 className="post-title">{post.data.title}</h1>
-              <div className="blog-post-meta">
-                {post.data.date && (
-                  <time dateTime={post.data.date}>
-                    {new Date(post.data.date).toLocaleDateString('tr-TR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                )}
-                {post.data.author && (
-                  <span className="blog-post-author">{post.data.author}</span>
-                )}
+              {post.data.description && (
+                <p className="post-lede">{post.data.description}</p>
+              )}
+
+              <div className="post-byline">
+                <img src={avatar} alt="" className="post-avatar" />
+                <div className="post-byline-text">
+                  <span className="post-byline-name">{post.data.author || 'Resul Çalışkan'}</span>
+                  <span className="post-byline-meta">
+                    {formattedDate}
+                    {formattedDate && ' · '}
+                    Software Developer
+                  </span>
+                </div>
               </div>
-            </header>
-            <hr className="post-divider" />
-            <div className="post-content">
+            </div>
+
+            <div className="post-rule" data-aos="fade-up" data-aos-delay="80" />
+
+            <div className="post-content" data-aos="fade-up" data-aos-delay="120">
               <ReactMarkdown>{post.content}</ReactMarkdown>
+            </div>
+
+            <div className="post-footer" data-aos="fade-up">
+              <div className="post-rule" />
+              <p className="post-footer-note">Thanks for reading.</p>
+              <Link to="/blog" className="cta">
+                <span>More posts</span>
+                <svg viewBox="0 0 13 10" height="10px" width="15px">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </Link>
             </div>
           </article>
         )}
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -6,9 +6,10 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
+import ScrollHandler from './components/ScrollHandler';
 import Projects from './pages/Projects.js';
-import Blog from './pages/Blog.js'; // Blog sayfasını import et
-import Post from './pages/Post.js';   // Tekil post sayfasını import et
+import Blog from './pages/Blog.js';
+import Post from './pages/Post.js';
 import './style.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -31,6 +32,7 @@ function App() {
       <Head />
       {isLoading ? <Preloader /> : (
         <Router>
+          <ScrollHandler />
           <Header />
           <Routes>
             <Route path="/" element={<Main />} />

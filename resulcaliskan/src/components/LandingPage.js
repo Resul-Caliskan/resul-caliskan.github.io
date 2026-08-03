@@ -155,35 +155,15 @@ const Name = () => (
 const Work = () => (
   <article id="work" data-aos="fade-up" data-aos-delay="400">
     <div>
-      <p className="jello">I</p>
-    </div>
-    <div>
-      {["d", "e", "s", "i", "g", "n"].map((letter, index) => (
+      {["S", "o", "f", "t", "w", "a", "r", "e"].map((letter, index) => (
         <p key={index} className="jello">
           {letter}
         </p>
       ))}
     </div>
     <div>
-      <p className="jello">&</p>
-    </div>
-    <div>
-      {["c", "o", "d", "e"].map((letter, index) => (
-        <p key={index} className="jello">
-          {letter}
-        </p>
-      ))}
-    </div>
-    <div>
-      {["f", "o", "r"].map((letter, index) => (
-        <p key={index} className="jello">
-          {letter}
-        </p>
-      ))}
-    </div>
-    <div>
-      {["w", "e", "b", "."].map((letter, index) => (
-        <p key={index} className="jello">
+      {["D", "e", "v", "e", "l", "o", "p", "e", "r", "."].map((letter, index) => (
+        <p key={`dev-${index}`} className="jello">
           {letter}
         </p>
       ))}
@@ -193,13 +173,8 @@ const Work = () => (
 
 const InfoPara = () => (
   <p id="info-para" data-aos="fade-up" data-aos-delay="600">
-    I love web development and enjoy crafting seamless full-stack
-    experiences—from backend to frontend—with beautiful and intuitive UIs. I'm
-    passionate about building products that deliver meaningful and engaging user
-    experiences.
-    <br />
-    <br />I value simple content structure, clean design patterns, and
-    thoughtful interactions.
+    Yazılım geliştiriciyim. Frontend, backend ve AI teknolojileriyle ürün
+    geliştiriyorum. Bu sitede öğrendiklerimi ve proje notlarımı paylaşıyorum.
   </p>
 );
 

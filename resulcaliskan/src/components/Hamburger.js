@@ -1,8 +1,43 @@
 // components/Hamburger.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+const mobileTabs = [
+  { path: '/', hash: '', label: '</Home>', id: 'home-mobile-tab', className: 'home' },
+  { path: '/blog', hash: '', label: '</Blog>', id: 'blog-mobile-tab', className: 'blog' },
+];
 
 const Hamburger = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const closeMenu = () => {
+    document.body.classList.remove('stopscrolling');
+    document.getElementById('mobiletogglemenu')?.classList.remove('show-toggle-menu');
+    document.getElementById('hamburger-button')?.classList.remove('hamburger-open');
+    document.getElementById('burger-bar1')?.classList.remove('hamburger-animation1');
+    document.getElementById('burger-bar2')?.classList.remove('hamburger-animation2');
+    document.getElementById('burger-bar3')?.classList.remove('hamburger-animation3');
+  };
+
+  const handleNav = (event, tab) => {
+    event.preventDefault();
+    closeMenu();
+
+    if (tab.path === '/blog') {
+      navigate('/blog');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.replaceState(null, '', '/');
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <>
       <div className="hamburger" id="hamburger" data-aos="fade">
@@ -16,31 +51,18 @@ const Hamburger = () => {
       </div>
       <div className="mobiletogglemenu" id="mobiletogglemenu">
         <ul className="mobile-navbar-tabs-ul" id="mobile-ul">
-          <li id="home-mobile-tab" className="mobile-navbar-tabs-li home activeThismobiletab">
-            <a href="#home" tabIndex="0" aria-label="Home menu button">
-              &#60;/Home&#62;
-            </a>
-          </li>
-          <li id="aboutme-mobile-tab" className="mobile-navbar-tabs-li about">
-            <a href="#about" tabIndex="0" aria-label="about menu button">
-              &#60;/AboutMe&#62;
-            </a>
-          </li>
-          <li id="skills-mobile-tab" className="mobile-navbar-tabs-li skills">
-            <a href="#skills" tabIndex="0" aria-label="skills menu button">
-              &#60;/Skills&#62;
-            </a>
-          </li>
-          <li id="projects-mobile-tab" className="mobile-navbar-tabs-li projects">
-            <a href="#projects" tabIndex="0" aria-label="projects menu button">
-              &#60;/Projects&#62;
-            </a>
-          </li>
-          <li id="blog-mobile-tab" className="mobile-navbar-tabs-li blog">
-            <Link to="/blog" tabIndex="0" aria-label="blog menu button">
-              &#60;/Blog&#62;
-            </Link>
-          </li>
+          {mobileTabs.map((tab) => (
+            <li key={tab.id} id={tab.id} className={`mobile-navbar-tabs-li ${tab.className}`}>
+              <a
+                href={tab.path}
+                tabIndex="0"
+                aria-label={`${tab.label} menu button`}
+                onClick={(event) => handleNav(event, tab)}
+              >
+                {tab.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </>
