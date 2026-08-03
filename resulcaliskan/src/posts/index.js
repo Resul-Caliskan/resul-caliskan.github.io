@@ -1,11 +1,18 @@
 // src/posts/index.js
-import post1 from './ilk-yazim.md';
+// Tüm .md dosyalarını otomatik olarak bulur — yeni yazı için sadece .md eklemen yeterli.
 
-// Yeni yazılar ekledikçe buraya import edin:
-// import post2 from './ikinci-yazi.md';
+const requirePost = require.context('./', false, /\.md$/);
 
-// İçe aktarılan değişken (örneğin, post1) dosyanın genel URL yoludur.
-export const posts = [
-  { slug: 'ilk-yazim', path: post1 },
-  // { slug: 'ikinci-yazi', path: post2 },
-];
+const resolvePath = (mod) => (typeof mod === 'string' ? mod : mod.default);
+
+export const posts = requirePost.keys().map((key) => {
+  const slug = key.replace(/^\.\//, '').replace(/\.md$/, '');
+  return {
+    slug,
+    path: resolvePath(requirePost(key)),
+  };
+});
+
+export function getPostBySlug(slug) {
+  return posts.find((post) => post.slug === slug) || null;
+}

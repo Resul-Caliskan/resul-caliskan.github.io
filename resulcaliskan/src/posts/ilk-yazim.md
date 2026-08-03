@@ -2,7 +2,7 @@
 title: 'İlk Blog Yazım'
 date: '2025-07-13'
 author: 'Resul Çalışkan'
-slug: 'ilk-yazim'
+description: 'Teknoloji ve yazılım üzerine düşüncelerime açılan ilk yazı.'
 ---
 
 ## Merhaba Dünya!

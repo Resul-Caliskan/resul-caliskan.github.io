@@ -1,5 +1,6 @@
 // components/Hamburger.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Hamburger = () => {
   return (
@@ -34,6 +35,11 @@ const Hamburger = () => {
             <a href="#projects" tabIndex="0" aria-label="projects menu button">
               &#60;/Projects&#62;
             </a>
+          </li>
+          <li id="blog-mobile-tab" className="mobile-navbar-tabs-li blog">
+            <Link to="/blog" tabIndex="0" aria-label="blog menu button">
+              &#60;/Blog&#62;
+            </Link>
           </li>
         </ul>
       </div>
