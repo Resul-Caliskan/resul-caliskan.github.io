@@ -9,26 +9,23 @@ const HomeBlog = () => {
   return (
     <section className="home-blog-section" id="posts">
       <div className="home-blog-inner">
-        <div className="section-heading" data-aos="fade-up">
-          <h2 className="section-heading-article" tabIndex="0" aria-label="Blog posts">
-            &#60;/Blog&#62;
-          </h2>
-          <p className="sectionHeadingP"></p>
+        <div className="blog-header">
+          <p className="blog-kicker">Writing</p>
+          <h2 className="blog-heading">Latest notes</h2>
+          <p className="blog-intro">
+            Notes on software, tech, and building things.
+          </p>
         </div>
-
-        <p className="blog-intro" data-aos="fade-up">
-          Notes on software, tech, and building things.
-        </p>
 
         <PostList posts={posts} loading={loading} />
 
         {!loading && posts.length > 0 && (
-          <div className="home-blog-more" data-aos="fade-up">
-            <Link to="/blog" className="cta">
-              <span>All posts</span>
-              <svg viewBox="0 0 13 10" height="10px" width="15px">
-                <path d="M1,5 L11,5"></path>
-                <polyline points="8 1 12 5 8 9"></polyline>
+          <div className="home-blog-more">
+            <Link to="/blog" className="blog-footer-link">
+              View all posts
+              <svg viewBox="0 0 13 10" width="14" height="10" aria-hidden="true">
+                <path d="M1,5 L11,5" stroke="currentColor" fill="none" strokeWidth="1.5" />
+                <polyline points="8 1 12 5 8 9" stroke="currentColor" fill="none" strokeWidth="1.5" />
               </svg>
             </Link>
           </div>

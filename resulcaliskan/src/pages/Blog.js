@@ -9,16 +9,13 @@ const Blog = () => {
   return (
     <section className="blog-section-container" id="blog">
       <div className="blog-section">
-        <div className="section-heading" data-aos="fade-up">
-          <h1 className="section-heading-article" tabIndex="0" aria-label="Blog heading">
-            &#60;/Blog&#62;
-          </h1>
-          <p className="sectionHeadingP"></p>
+        <div className="blog-header">
+          <p className="blog-kicker">Writing</p>
+          <h1 className="blog-heading">All posts</h1>
+          <p className="blog-intro">
+            Notes on software, tech, and building things.
+          </p>
         </div>
-
-        <p className="blog-intro" data-aos="fade-up">
-          Thoughts on software, tech, and building things.
-        </p>
 
         <PostList posts={posts} loading={loading} />
       </div>

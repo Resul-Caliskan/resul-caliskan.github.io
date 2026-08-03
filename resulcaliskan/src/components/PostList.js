@@ -15,14 +15,9 @@ const PostList = ({ posts, loading }) => {
       {posts.map((post, index) => (
         <article
           key={post.slug}
-          className={`blog-post-card${index === 0 ? ' blog-post-card--featured' : ''}`}
-          data-aos="fade-up"
-          data-aos-delay={index * 80}
+          className={`blog-post-item${index === 0 ? ' blog-post-item--featured' : ''}`}
         >
-          <div className="blog-post-index" aria-hidden="true">
-            {String(index + 1).padStart(2, '0')}
-          </div>
-          <div className="blog-post-body">
+          <Link to={`/blog/${post.slug}`} className="blog-post-link">
             <div className="blog-post-meta">
               {post.date && (
                 <time dateTime={post.date}>
@@ -33,26 +28,28 @@ const PostList = ({ posts, loading }) => {
                   })}
                 </time>
               )}
-              {post.author && <span className="blog-post-author">{post.author}</span>}
+              {post.readMinutes && (
+                <>
+                  <span className="blog-post-dot" aria-hidden="true">·</span>
+                  <span>{post.readMinutes} min read</span>
+                </>
+              )}
             </div>
-            <h2 className="blog-post-title">
-              <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-            </h2>
+
+            <h2 className="blog-post-title">{post.title}</h2>
+
             {post.description && (
               <p className="blog-post-description">{post.description}</p>
             )}
-            <Link
-              to={`/blog/${post.slug}`}
-              className="blog-read-link"
-              aria-label={`Read ${post.title}`}
-            >
-              Read article
+
+            <span className="blog-read-link">
+              Read
               <svg viewBox="0 0 13 10" height="10" width="14" aria-hidden="true">
                 <path d="M1,5 L11,5" stroke="currentColor" fill="none" strokeWidth="1.5" />
                 <polyline points="8 1 12 5 8 9" stroke="currentColor" fill="none" strokeWidth="1.5" />
               </svg>
-            </Link>
-          </div>
+            </span>
+          </Link>
         </article>
       ))}
     </div>

@@ -8,34 +8,38 @@ const Head = () => {
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="robots" content="index, follow" />
-      <meta name="theme-color" content="#000" />
+      <meta name="theme-color" content="#f5f0eb" />
       <meta
         name="description"
-        content="Resul Çalışkan | Portfolio, Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
+        content="Resul Çalışkan — Software developer. Notes on software, tech, and building things."
       />
       <meta
         name="keywords"
-        content="Resul Çalışkan,Resul Çalışkan portfolio,Resul Çalışkan Portfolio,ResulCaliskan,Resul Çalışkan site,Resul Çalışkan Site,Resul Çalışkan me,Resul Çalışkan web,Resul Çalışkan github,Resuljangid site,Resuljangid uiverse,uiverse,Resul Çalışkan uiverse,Resul Çalışkan frontend developer,frontend developer"
+        content="Resul Çalışkan, software developer, blog, React, frontend, backend, AI"
       />
       <meta name="author" content="Resul Çalışkan" />
 
-      <meta property="og:title" content="Resul Çalışkan | Portfolio" />
+      <meta property="og:title" content="Resul Çalışkan" />
       <meta property="og:description"
-        content="Hi! My name is Resul. I'm a web developer and digital visual artist. Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
+        content="Software developer. Notes on software, tech, and building things."
       />
       <meta property="og:url" content="https://resul-caliskan.github.io/" />
-      <meta property="og:site_name" content="Resul Çalışkan Portfolio" />
+      <meta property="og:site_name" content="Resul Çalışkan" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Resul Çalışkan | Portfolio" />
+      <meta name="twitter:title" content="Resul Çalışkan" />
       <meta name="twitter:description"
-        content="Hi! My name is Resul. I'm a web developer and digital visual artist. Visit and know about me & my projects/designs. I value simple content structure, clean design patterns, and thoughtful interactions."
+        content="Software developer. Notes on software, tech, and building things."
       />
-      <title>Resul Çalışkan | Portfolio</title>
+      <title>Resul Çalışkan</title>
       <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
       <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
       <link rel="stylesheet" href="style.css" />
-      <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap"
+      />
     </>
   );
 };
