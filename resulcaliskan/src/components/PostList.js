@@ -15,39 +15,44 @@ const PostList = ({ posts, loading }) => {
       {posts.map((post, index) => (
         <article
           key={post.slug}
-          className="blog-post-card"
+          className={`blog-post-card${index === 0 ? ' blog-post-card--featured' : ''}`}
           data-aos="fade-up"
           data-aos-delay={index * 80}
         >
-          <div className="blog-post-meta">
-            {post.date && (
-              <time dateTime={post.date}>
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-            )}
-            {post.author && <span className="blog-post-author">{post.author}</span>}
+          <div className="blog-post-index" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
           </div>
-          <h2 className="blog-post-title">
-            <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-          </h2>
-          {post.description && (
-            <p className="blog-post-description">{post.description}</p>
-          )}
-          <Link
-            to={`/blog/${post.slug}`}
-            className="cta blog-read-cta"
-            aria-label={`Read ${post.title}`}
-          >
-            <span>Read</span>
-            <svg viewBox="0 0 13 10" height="10px" width="15px">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-          </Link>
+          <div className="blog-post-body">
+            <div className="blog-post-meta">
+              {post.date && (
+                <time dateTime={post.date}>
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+              )}
+              {post.author && <span className="blog-post-author">{post.author}</span>}
+            </div>
+            <h2 className="blog-post-title">
+              <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+            </h2>
+            {post.description && (
+              <p className="blog-post-description">{post.description}</p>
+            )}
+            <Link
+              to={`/blog/${post.slug}`}
+              className="blog-read-link"
+              aria-label={`Read ${post.title}`}
+            >
+              Read article
+              <svg viewBox="0 0 13 10" height="10" width="14" aria-hidden="true">
+                <path d="M1,5 L11,5" stroke="currentColor" fill="none" strokeWidth="1.5" />
+                <polyline points="8 1 12 5 8 9" stroke="currentColor" fill="none" strokeWidth="1.5" />
+              </svg>
+            </Link>
+          </div>
         </article>
       ))}
     </div>
