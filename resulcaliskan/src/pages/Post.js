@@ -99,7 +99,7 @@ const Post = () => {
           </div>
         ) : (
           <article className="post-article">
-            <header className="post-hero">
+            <div className="post-hero">
               <div className="post-meta-row">
                 {formattedDate && <time dateTime={post.data.date}>{formattedDate}</time>}
                 <span aria-hidden="true">·</span>
@@ -119,7 +119,7 @@ const Post = () => {
                   <span className="post-byline-meta">Software Developer</span>
                 </div>
               </div>
-            </header>
+            </div>
 
             <div className="post-content">
               <ReactMarkdown>{post.content}</ReactMarkdown>
