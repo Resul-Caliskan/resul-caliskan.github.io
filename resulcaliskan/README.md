@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Resul Çalışkan — Personal Site & Blog
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Personal portfolio and writing site for [Resul Çalışkan](https://resul-caliskan.github.io/).
 
-## Available Scripts
+**Live:** [https://resul-caliskan.github.io/](https://resul-caliskan.github.io/)
 
-In the project directory, you can run:
+## Stack
 
-### `npm start`
+- React 19 (Create React App)
+- React Router
+- Markdown posts (`gray-matter` + `react-markdown`)
+- Deployed with `gh-pages` to GitHub Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project layout
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+resulcaliskan.github.io/
+└── resulcaliskan/          ← app root (run npm here)
+    ├── public/
+    ├── src/
+    │   ├── components/     ← UI sections, nav, blog list
+    │   ├── pages/          ← Home, Blog, Post, Projects
+    │   ├── posts/          ← Markdown articles (*.md)
+    │   ├── hooks/
+    │   └── style.css
+    └── package.json
+```
 
-### `npm test`
+## Getting started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cd resulcaliskan
+npm install
+npm start
+```
 
-### `npm run build`
+App runs at [http://localhost:3000](http://localhost:3000).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Writing a new post
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Add a file under `src/posts/`, e.g. `src/posts/my-post.md`
+2. Use a URL-safe filename (lowercase, hyphens, no spaces): `kavramsal-tasarim.md` → `/blog/kavramsal-tasarim`
+3. Start with frontmatter:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```md
+---
+title: 'Post title'
+date: '2026-08-03'
+author: 'Resul Çalışkan'
+description: 'One-line summary shown in the list and under the title.'
+---
 
-### `npm run eject`
+Your content starts here. Do not repeat the title as `# Heading` —
+the page already renders it from frontmatter.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Section
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Paragraphs, lists, **bold**, and blockquotes work:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Key idea goes here.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Posts are discovered automatically via `require.context`. No manual index entry needed.
 
-## Learn More
+Markdown is **bundled into the JS build** (not fetched as `.md` files). GitHub Pages does not serve raw `.md` assets, which previously caused “Post not found”.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deploy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+From `resulcaliskan/`:
 
-### Code Splitting
+```bash
+npm run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This will:
 
-### Analyzing the Bundle Size
+1. Production build
+2. Copy `index.html` → `404.html` (SPA deep-link support)
+3. Publish `build/` to the `gh-pages` branch (including `.nojekyll`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Site updates usually appear within 1–2 minutes.
 
-### Making a Progressive Web App
+## Useful scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Command | What it does |
+|---|---|
+| `npm start` | Local development |
+| `npm run build` | Production build + SPA `404.html` |
+| `npm run deploy` | Build and publish to GitHub Pages |
+| `npm test` | Run tests |
 
-### Advanced Configuration
+## Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Homepage field in `package.json` is `https://resul-caliskan.github.io/`
+- Prefer not editing `src/components/hover.css` unless you need Earth/stars animation changes; landing overrides live in `style.css`
+- Avoid spaces and Turkish characters in post filenames
