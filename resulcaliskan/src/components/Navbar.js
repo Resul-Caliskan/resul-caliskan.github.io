@@ -4,7 +4,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const tabs = [
   { path: '/', hash: '', label: '</Home>', delay: 100 },
-  { path: '/blog', hash: '', label: '</Blog>', delay: 100 },
+  { path: '/#projects', hash: 'projects', label: '</Projeler>', delay: 150 },
+  { path: '/blog', hash: '', label: '</Blog>', delay: 200 },
 ];
 
 const Navbar = () => {
@@ -15,6 +16,8 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname.startsWith('/blog')) {
       setActiveTab('/blog');
+    } else if (location.hash === '#projects') {
+      setActiveTab('projects');
     } else {
       setActiveTab('home');
     }
@@ -22,6 +25,7 @@ const Navbar = () => {
 
   const isActive = (tab) => {
     if (tab.path === '/blog') return activeTab === '/blog';
+    if (tab.hash === 'projects') return activeTab === 'projects';
     return activeTab === 'home';
   };
 
@@ -32,6 +36,21 @@ const Navbar = () => {
       setActiveTab('/blog');
       navigate('/blog');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    if (tab.hash === 'projects') {
+      setActiveTab('projects');
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const elem = document.getElementById('projects');
+          if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const elem = document.getElementById('projects');
+        if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+      }
       return;
     }
 

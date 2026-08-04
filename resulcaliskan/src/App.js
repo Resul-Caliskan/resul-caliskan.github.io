@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import ScrollHandler from './components/ScrollHandler';
 import Projects from './pages/Projects.js';
+import ProjectDetail from './pages/ProjectDetail.js';
 import Blog from './pages/Blog.js';
 import Post from './pages/Post.js';
 import './style.css';
@@ -37,6 +38,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/projeler" element={<Projects />} />
+            <Route path="/projeler/:slug" element={<ProjectDetail />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<Post />} />
           </Routes>
