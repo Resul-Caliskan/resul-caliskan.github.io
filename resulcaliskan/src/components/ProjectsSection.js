@@ -6,31 +6,32 @@ import kamiPreview from '../png/kami-preview.webp';
 import hrhubFavicon from '../png/hrhub.png';
 import ballgorithmIcon from '../png/ballgoritm_icon.png';
 import paper2quizIcon from '../png/paper2quiz_icon.png';
+import { FiExternalLink, FiArrowRight } from 'react-icons/fi';
 
 const ProjectsSection = () => {
   const professionalProjects = [
     {
-      slug: "kami",
       title: "Kami — Çizgi Studio",
       badge: "Profesyonel Deneyim — Full Stack Developer",
       badgeType: "professional",
       description: "Çizgi Studio bünyesinde Full Stack Developer olarak geliştirilmesinde yer aldığım sosyal hikaye ve çizgi roman platformu. Kami Workshop ile dijital içerik üretimi, AI karakter sohbetleri ve topluluk etkileşimi.",
       favicon: kamiFavicon,
       image: kamiPreview,
-      detailLink: "/projeler/kami",
-      liveLabel: "Kavramsal Tasarımı İncele",
+      liveLink: "https://cizgi.studio/",
+      liveLabel: "Canlı İncele",
+      isExternal: true,
       alt: "Kami by Çizgi Studio preview"
     },
     {
-      slug: "hrhub",
       title: "HRHUB CRM",
       badge: "Profesyonel Deneyim — Full Stack Developer",
       badgeType: "professional",
       description: "Full Stack Developer olarak geliştirme süreçlerinde rol aldığım yapay zeka destekli CRM web uygulaması. İnsan kaynakları ve müşteri ilişkileri yönetim çözümleri.",
       favicon: hrhubFavicon,
       image: "https://static.wingify.com/gcp/uploads/sites/18/2023/08/CRM.png",
-      detailLink: "/projeler/hrhub",
-      liveLabel: "Kavramsal Tasarımı İncele",
+      liveLink: "https://crm-daltonlar.vercel.app/",
+      liveLabel: "Canlı İncele",
+      isExternal: true,
       alt: "HRHUB CRM preview image"
     }
   ];
@@ -46,6 +47,7 @@ const ProjectsSection = () => {
       image: null,
       detailLink: "/projeler/ballgorithm",
       liveLabel: "Kavramsal Tasarımı İncele",
+      isExternal: false,
       alt: "Ballgorithm icon preview"
     },
     {
@@ -58,6 +60,7 @@ const ProjectsSection = () => {
       image: null,
       detailLink: "/projeler/paper2quiz",
       liveLabel: "Kavramsal Tasarımı İncele",
+      isExternal: false,
       alt: "Paper2Quiz icon preview"
     }
   ];
@@ -128,13 +131,23 @@ const ProjectBox = ({ project }) => {
           </div>
           <p className="ProjectDescription" style={{ fontSize: '1rem', lineHeight: '1.6', color: '#334155', fontWeight: '450' }}>{project.description}</p>
           <div className="project-buttons" style={{ marginTop: '1.25rem' }}>
-            <Link to={project.detailLink} className="cta" aria-label={`View details for ${project.title}`}>
-              <span>{project.liveLabel || "Kavramsal Tasarımı İncele"}</span>
-              <svg viewBox="0 0 13 10" height="10px" width="15px">
-                <path d="M1,5 L11,5"></path>
-                <polyline points="8 1 12 5 8 9"></polyline>
-              </svg>
-            </Link>
+            {project.isExternal ? (
+              <a 
+                href={project.liveLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="cta" 
+                aria-label={`Visit ${project.title} live`}
+              >
+                <span>{project.liveLabel || "Canlı İncele"}</span>
+                <FiExternalLink size={16} style={{ marginLeft: '4px' }} />
+              </a>
+            ) : (
+              <Link to={project.detailLink} className="cta" aria-label={`View details for ${project.title}`}>
+                <span>{project.liveLabel || "Kavramsal Tasarımı İncele"}</span>
+                <FiArrowRight size={16} style={{ marginLeft: '4px' }} />
+              </Link>
+            )}
           </div>
         </div>
         {project.image && (
