@@ -46,7 +46,7 @@ const ProjectsSection = () => {
       favicon: ballgorithmIcon,
       image: null,
       detailLink: "/projeler/ballgorithm",
-      liveLabel: "Kavramsal Tasarımı İncele",
+      liveLabel: "Projeyi İncele",
       isExternal: false,
       alt: "Ballgorithm icon preview"
     },
@@ -59,7 +59,7 @@ const ProjectsSection = () => {
       favicon: paper2quizIcon,
       image: null,
       detailLink: "/projeler/paper2quiz",
-      liveLabel: "Kavramsal Tasarımı İncele",
+      liveLabel: "Projeyi İncele",
       isExternal: false,
       alt: "Paper2Quiz icon preview"
     }
@@ -144,7 +144,7 @@ const ProjectBox = ({ project }) => {
               </a>
             ) : (
               <Link to={project.detailLink} className="cta" aria-label={`View details for ${project.title}`}>
-                <span>{project.liveLabel || "Kavramsal Tasarımı İncele"}</span>
+                <span>{project.liveLabel || "Projeyi İncele"}</span>
                 <FiArrowRight size={16} style={{ marginLeft: '4px' }} />
               </Link>
             )}
