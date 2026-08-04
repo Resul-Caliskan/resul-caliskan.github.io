@@ -2,15 +2,17 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { projectsData } from '../data/projectData';
-import MermaidDiagram from '../components/MermaidDiagram';
+import './ProjectDetail.css';
 import { 
   FiArrowLeft, 
   FiExternalLink, 
+  FiGithub, 
+  FiCheckCircle, 
   FiLayers, 
   FiCpu, 
-  FiCheckCircle, 
   FiCode, 
-  FiInfo 
+  FiCompass,
+  FiMail
 } from 'react-icons/fi';
 
 const ProjectDetail = () => {
@@ -24,210 +26,310 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <div style={{ padding: '5rem 2rem', textAlign: 'center', minHeight: '60vh' }}>
-        <h2 style={{ fontSize: '2rem', color: '#1c1917' }}>Proje Bulunamadı</h2>
-        <p style={{ color: '#44403c', marginTop: '1rem' }}>Aradığınız proje mevcut değil veya kaldırılmış olabilir.</p>
-        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '1.5rem', color: '#2563eb', fontWeight: 'bold' }}>
-          <FiArrowLeft /> Ana Sayfaya Dön
+      <div className="cs-container" style={{ textAlign: 'center', padding: '6rem 1.5rem' }}>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: '800' }}>Proje Bulunamadı</h2>
+        <p style={{ color: '#64748b', marginTop: '1rem', fontSize: '1.2rem' }}>
+          Aradığınız proje mevcut değil veya erişim sınırı bulunuyor.
+        </p>
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginTop: '2rem', color: '#2563eb', fontWeight: '700' }}>
+          <FiArrowLeft size={20} /> Ana Sayfaya Dön
         </Link>
       </div>
     );
   }
 
-  const isPersonal = project.badge?.includes('Kişisel');
-  const badgeStyle = {
-    fontSize: '0.85rem',
-    fontWeight: '700',
-    letterSpacing: '0.03em',
-    padding: '5px 14px',
-    borderRadius: '20px',
-    display: 'inline-block',
-    backgroundColor: isPersonal ? '#f3e8ff' : '#dbeafe',
-    color: isPersonal ? '#581c87' : '#1e3a8a',
-    border: isPersonal ? '1.5px solid #c084fc' : '1.5px solid #60a5fa',
-  };
-
   return (
-    <main style={{ maxWidth: '960px', margin: '0 auto', padding: '2.5rem 1.5rem 6rem' }}>
-      {/* Navigation Back Button */}
-      <button 
-        onClick={() => navigate('/#projects')} 
-        style={{
-          background: 'none',
-          border: 'none',
-          color: '#475569',
-          fontSize: '0.95rem',
-          fontWeight: '600',
-          cursor: 'pointer',
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          marginBottom: '2rem',
-          padding: '0.4rem 0.8rem',
-          borderRadius: '8px',
-          backgroundColor: '#f1f5f9',
-          transition: 'all 0.2s ease'
-        }}
-      >
-        <FiArrowLeft size={16} /> Projelere Dön
-      </button>
+    <div className="cs-container">
+      {/* 0. Sticky Navigation Bar */}
+      <nav className="cs-nav">
+        <button onClick={() => navigate('/#projects')} className="cs-back-btn">
+          <FiArrowLeft size={18} /> Projelere Dön
+        </button>
+        <span style={{ fontSize: '0.9rem', fontWeight: '700', color: '#475569' }}>
+          Engineering Case Study — {project.title}
+        </span>
+        <a href="mailto:resulcaliskansau@gmail.com" className="cs-back-btn" style={{ color: '#2563eb' }}>
+          İletişim <FiMail size={16} />
+        </a>
+      </nav>
 
-      {/* Header Card */}
-      <header style={{
-        backgroundColor: '#ffffff',
-        padding: '2.5rem',
-        borderRadius: '20px',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
-        border: '1px solid #e2e8f0',
-        marginBottom: '2.5rem'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.75rem', flexWrap: 'wrap' }}>
-          <img 
-            src={project.icon} 
-            alt={`${project.title} logo`} 
-            style={{ 
-              width: '84px', 
-              height: '84px', 
-              borderRadius: '18px', 
-              objectFit: 'cover',
-              boxShadow: '0 4px 14px rgba(0,0,0,0.08)'
-            }} 
-          />
-          <div style={{ flex: 1, minWidth: '260px' }}>
-            <span style={badgeStyle}>{project.badge}</span>
-            <h1 style={{ fontSize: '2.2rem', fontWeight: '800', color: '#0f172a', margin: '0.6rem 0 0.25rem', letterSpacing: '-0.02em' }}>
-              {project.title}
-            </h1>
-            <p style={{ fontSize: '1.15rem', color: '#475569', fontWeight: '500', lineHeight: '1.4' }}>
-              {project.subtitle}
-            </p>
+      {/* 1. Hero Section */}
+      <header className="cs-hero">
+        <div className="cs-hero-top">
+          <img src={project.icon} alt={`${project.title} icon`} className="cs-hero-icon" />
+          <div className="cs-hero-meta">
+            <span className="cs-hero-badge">{project.heroBadge}</span>
+            <h1 className="cs-hero-title">{project.title}</h1>
+            <p className="cs-hero-subtitle">{project.subtitle}</p>
+            <div className="cs-hero-actions">
+              {project.storeLink && (
+                <a href={project.storeLink} target="_blank" rel="noopener noreferrer" className="cs-btn-primary">
+                  <span>{project.storeLabel}</span>
+                  <FiExternalLink size={18} />
+                </a>
+              )}
+              {project.githubLink && (
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="cs-btn-secondary">
+                  <FiGithub size={18} /> Source Code
+                </a>
+              )}
+            </div>
           </div>
-          {project.storeLink && (
-            <a 
-              href={project.storeLink} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style={{
-                backgroundColor: '#1e293b',
-                color: '#ffffff',
-                padding: '0.8rem 1.5rem',
-                borderRadius: '12px',
-                fontWeight: '600',
-                fontSize: '0.95rem',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.6rem',
-                boxShadow: '0 4px 12px rgba(15, 23, 42, 0.15)',
-                marginTop: '0.5rem'
-              }}
-            >
-              <span>{project.storeLabel}</span>
-              <FiExternalLink size={16} />
-            </a>
-          )}
         </div>
+
+        {/* Impact Metrics Bar */}
+        {project.impactMetrics && (
+          <div className="cs-metrics-grid">
+            {project.impactMetrics.map((item, index) => (
+              <div key={index} className="cs-metric-card">
+                <div className="cs-metric-val">{item.value}</div>
+                <div className="cs-metric-lbl">{item.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
       </header>
 
-      {/* Overview Section */}
-      <section style={{ marginBottom: '3rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.85rem' }}>
-          <FiInfo size={22} color="#2563eb" />
-          <h2 style={{ fontSize: '1.45rem', color: '#0f172a', fontWeight: '700', margin: 0 }}>
-            Genel Bakış
-          </h2>
-        </div>
-        <div style={{ fontSize: '1.05rem', lineHeight: '1.75', color: '#334155', backgroundColor: '#ffffff', padding: '1.75rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-          {project.overview}
-        </div>
-      </section>
-
-      {/* Conceptual Design & Mermaid Section */}
-      {project.conceptualDesign && (
-        <section style={{ marginBottom: '3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem' }}>
-            <FiLayers size={22} color="#7c3aed" />
-            <h2 style={{ fontSize: '1.45rem', color: '#0f172a', fontWeight: '700', margin: 0 }}>
-              {project.conceptualDesign.title}
-            </h2>
+      {/* 2. Quick Overview Bar */}
+      {project.quickOverview && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">01 / Quick Overview</span>
+            <h2 className="cs-section-title">Proje Özeti & Rolüm</h2>
           </div>
-          <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#475569', marginBottom: '1rem' }}>
-            {project.conceptualDesign.description}
-          </p>
-
-          <MermaidDiagram chart={project.conceptualDesign.diagram} />
-        </section>
-      )}
-
-      {/* Architecture & Flow Section */}
-      {project.architecture && (
-        <section style={{ marginBottom: '3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.5rem' }}>
-            <FiCpu size={22} color="#0284c7" />
-            <h2 style={{ fontSize: '1.45rem', color: '#0f172a', fontWeight: '700', margin: 0 }}>
-              {project.architecture.title}
-            </h2>
-          </div>
-          <p style={{ fontSize: '1rem', lineHeight: '1.6', color: '#475569', marginBottom: '1rem' }}>
-            {project.architecture.description}
-          </p>
-
-          <MermaidDiagram chart={project.architecture.diagram} />
-        </section>
-      )}
-
-      {/* Highlights & Features */}
-      {project.highlights && (
-        <section style={{ marginBottom: '3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-            <FiCheckCircle size={22} color="#16a34a" />
-            <h2 style={{ fontSize: '1.45rem', color: '#0f172a', fontWeight: '700', margin: 0 }}>
-              Öne Çıkan Mimari Kararlar
-            </h2>
-          </div>
-          <div style={{ backgroundColor: '#ffffff', padding: '1.5rem 1.75rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
-            <ul style={{ paddingLeft: '1.25rem', margin: 0 }}>
-              {project.highlights.map((item, index) => (
-                <li key={index} style={{ fontSize: '1.05rem', color: '#334155', marginBottom: '0.6rem', lineHeight: '1.6' }}>
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div className="cs-overview-grid">
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Geliştirici Rolü</div>
+              <div className="cs-overview-value">{project.quickOverview.role}</div>
+            </div>
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Geliştirme Süresi</div>
+              <div className="cs-overview-value">{project.quickOverview.duration}</div>
+            </div>
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Hedef Platform</div>
+              <div className="cs-overview-value">{project.quickOverview.platform}</div>
+            </div>
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Motor / Framework</div>
+              <div className="cs-overview-value">{project.quickOverview.engine}</div>
+            </div>
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Programlama Dili</div>
+              <div className="cs-overview-value">{project.quickOverview.language}</div>
+            </div>
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Ekip Boyutu</div>
+              <div className="cs-overview-value">{project.quickOverview.teamSize}</div>
+            </div>
+            <div className="cs-overview-card">
+              <div className="cs-overview-label">Proje Durumu</div>
+              <div className="cs-overview-value" style={{ color: '#059669' }}>{project.quickOverview.status}</div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* Tech Stack */}
-      {project.techStack && (
-        <section style={{ marginBottom: '3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-            <FiCode size={22} color="#ea580c" />
-            <h2 style={{ fontSize: '1.45rem', color: '#0f172a', fontWeight: '700', margin: 0 }}>
-              Teknoloji Yığını
-            </h2>
+      {/* 3. Problem */}
+      {project.problem && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">02 / The Problem</span>
+            <h2 className="cs-section-title">Neyi Çözmeye Çalıştım?</h2>
+            <p className="cs-section-desc">Kullanıcıların yaşadığı temel darboğazlar ve ürün motivasyonu.</p>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
-            {project.techStack.map((tech, index) => (
-              <span 
-                key={index}
-                style={{
-                  backgroundColor: '#ffffff',
-                  color: '#1e293b',
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  padding: '7px 15px',
-                  borderRadius: '10px',
-                  border: '1px solid #cbd5e1',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
-                }}
-              >
-                {tech}
-              </span>
+          <div className="cs-card-grid-2">
+            {project.problem.map((item, index) => (
+              <div key={index} className="cs-card-box" style={{ borderLeft: '4px solid #dc2626' }}>
+                <div className="cs-card-title">{item.title}</div>
+                <div className="cs-card-text">{item.desc}</div>
+              </div>
             ))}
           </div>
         </section>
       )}
-    </main>
+
+      {/* 4. Solution */}
+      {project.solution && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">03 / The Solution</span>
+            <h2 className="cs-section-title">Geliştirdiğim Yenilikçi Çözüm</h2>
+            <p className="cs-section-desc">Teknik yaklaşım ve ürün fark yaratan özellikleri.</p>
+          </div>
+          <div className="cs-card-grid-2">
+            {project.solution.map((item, index) => (
+              <div key={index} className="cs-card-box" style={{ borderLeft: '4px solid #2563eb' }}>
+                <div className="cs-card-title">{item.title}</div>
+                <div className="cs-card-text">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 5. Gameplay Journey Timeline */}
+      {project.gameplayJourney && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">04 / User Journey & Gameplay</span>
+            <h2 className="cs-section-title">Adım Adım Kullanıcı & Sistem Akışı</h2>
+            <p className="cs-section-desc">Girdiden çıktılara adım adım deneyim döngüsü.</p>
+          </div>
+          <div className="cs-timeline-grid">
+            {project.gameplayJourney.map((step, index) => (
+              <div key={index} className="cs-timeline-step">
+                <div className="cs-step-num">{step.step}</div>
+                <div className="cs-step-title">{step.title}</div>
+                <div className="cs-step-desc">{step.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 6. Framer Style Node Architecture */}
+      {project.nodeArchitecture && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">05 / Code & Data Architecture</span>
+            <h2 className="cs-section-title">Düğümlü Sistem Mimarisi (Node Map)</h2>
+            <p className="cs-section-desc">Modüller arası veri akışı ve katmanlı yazılım yapısı.</p>
+          </div>
+          <div className="cs-node-grid">
+            {project.nodeArchitecture.map((node, index) => (
+              <div key={index} className="cs-node-card">
+                <div className="cs-node-category">{node.category}</div>
+                <div className="cs-node-name">{node.name}</div>
+                <div className="cs-node-desc">{node.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 7. Technical Challenges (Triplet Format) */}
+      {project.technicalChallenges && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">06 / Technical Challenges</span>
+            <h2 className="cs-section-title">Zorlu Mühendislik Problemleri & Çözümler</h2>
+            <p className="cs-section-desc">Geliştirme sürecinde karşılaşılan derin teknik engeller.</p>
+          </div>
+          {project.technicalChallenges.map((item, index) => (
+            <div key={index} className="cs-challenge-card">
+              <div className="cs-challenge-grid">
+                <div>
+                  <div className="cs-triplet-title challenge">⚠️ Mühendislik Problemi</div>
+                  <div className="cs-triplet-text">{item.challenge}</div>
+                </div>
+                <div>
+                  <div className="cs-triplet-title solution">🛠️ Uygulanan Çözüm</div>
+                  <div className="cs-triplet-text">{item.solution}</div>
+                </div>
+                <div>
+                  <div className="cs-triplet-title impact">🎯 Elde Edilen Sonuç</div>
+                  <div className="cs-triplet-text">{item.impact}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </section>
+      )}
+
+      {/* 8. Engineering Decisions */}
+      {project.engineeringDecisions && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">07 / Engineering Decisions</span>
+            <h2 className="cs-section-title">Kritik Mimari Kararlar</h2>
+            <p className="cs-section-desc">Performans, ölçeklenebilirlik ve sürdürülebilirlik odaklı tercihler.</p>
+          </div>
+          <div className="cs-decision-grid">
+            {project.engineeringDecisions.map((item, index) => (
+              <div key={index} className="cs-decision-card">
+                <div className="cs-decision-title">{item.title}</div>
+                <div className="cs-decision-desc">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 9. Tech Stack */}
+      {project.techStack && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">08 / Tech Stack & Tooling</span>
+            <h2 className="cs-section-title">Kullanılan Teknolojiler & Araçlar</h2>
+          </div>
+          <div className="cs-tech-grid">
+            {project.techStack.map((tech, index) => (
+              <div key={index} className="cs-tech-card">
+                <div className="cs-tech-name">{tech.name}</div>
+                <div className="cs-tech-cat">{tech.category}</div>
+                <div className="cs-tech-desc">{tech.desc}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 10. What I Learned */}
+      {project.whatILearned && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">09 / Engineering Insights</span>
+            <h2 className="cs-section-title">Bu Projeden Ne Öğrendim?</h2>
+          </div>
+          <div className="cs-list-card">
+            {project.whatILearned.map((insight, index) => (
+              <div key={index} className="cs-list-item">
+                <FiCheckCircle size={22} color="#16a34a" style={{ minWidth: '22px', marginTop: '3px' }} />
+                <span>{insight}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 11. Next Steps & Roadmap */}
+      {project.nextSteps && (
+        <section className="cs-section">
+          <div className="cs-section-header">
+            <span className="cs-section-tag">10 / Future Vision & Roadmap</span>
+            <h2 className="cs-section-title">Gelecek Yol Haritası & Planlar</h2>
+          </div>
+          <div className="cs-list-card">
+            {project.nextSteps.map((step, index) => (
+              <div key={index} className="cs-list-item">
+                <FiCompass size={22} color="#2563eb" style={{ minWidth: '22px', marginTop: '3px' }} />
+                <span>{step}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 12. Call To Action Footer */}
+      <footer className="cs-footer-cta">
+        <h2 className="cs-footer-title">Birlikte Harika Ürünler İnşa Edelim</h2>
+        <p className="cs-footer-subtitle">
+          Teknik yetkinliklerim, ürün geliştirme yaklaşımım ve iş birliği fırsatları için benimle iletişime geçebilirsiniz.
+        </p>
+        <div className="cs-footer-btns">
+          <a href="mailto:resulcaliskansau@gmail.com" className="cs-btn-primary" style={{ background: '#ffffff', color: '#0f172a' }}>
+            <FiMail size={18} /> İletişime Geçin
+          </a>
+          <button onClick={() => navigate('/#projects')} className="cs-btn-secondary">
+            <FiLayers size={18} /> Tüm Projelerim
+          </button>
+          <a href="https://github.com/resul-caliskan" target="_blank" rel="noopener noreferrer" className="cs-btn-secondary">
+            <FiGithub size={18} /> GitHub Profile
+          </a>
+        </div>
+      </footer>
+    </div>
   );
 };
 

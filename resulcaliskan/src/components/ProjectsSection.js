@@ -94,7 +94,7 @@ const SectionHeading = ({ title, subtitle }) => (
       &#60;/{title}&#62;
     </h2>
     {subtitle && (
-      <p className="sectionHeadingP" style={{ fontSize: '1.15rem', color: '#292524', marginTop: '0.6rem', fontWeight: '600', lineHeight: '1.5' }}>
+      <p className="sectionHeadingP" style={{ fontSize: '1.15rem', color: '#94a3b8', marginTop: '0.6rem', fontWeight: '500', lineHeight: '1.5' }}>
         {subtitle}
       </p>
     )}
@@ -111,9 +111,9 @@ const ProjectBox = ({ project }) => {
     borderRadius: '20px',
     display: 'inline-block',
     marginBottom: '0.5rem',
-    backgroundColor: isPersonal ? '#f3e8ff' : '#dbeafe',
-    color: isPersonal ? '#581c87' : '#1e3a8a',
-    border: isPersonal ? '1.5px solid #c084fc' : '1.5px solid #60a5fa',
+    backgroundColor: isPersonal ? 'rgba(167, 139, 250, 0.15)' : 'rgba(59, 130, 246, 0.15)',
+    color: isPersonal ? '#c084fc' : '#60a5fa',
+    border: isPersonal ? '1.5px solid rgba(192, 132, 252, 0.3)' : '1.5px solid rgba(96, 165, 250, 0.3)',
   };
 
   return (
@@ -121,15 +121,15 @@ const ProjectBox = ({ project }) => {
       <div className="project-box project-box2">
         <div className="info-div">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-            <img src={project.favicon} alt={`${project.title} favicon`} className="faviconforProject" style={{ width: '70px', height: '70px', minWidth: '70px', borderRadius: '16px', objectFit: 'cover', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
+            <img src={project.favicon} alt={`${project.title} favicon`} className="faviconforProject" style={{ width: '70px', height: '70px', minWidth: '70px', borderRadius: '16px', objectFit: 'cover', boxShadow: '0 4px 12px rgba(0,0,0,0.4)' }} />
             <div>
               <span style={badgeStyle}>
                 {project.badge}
               </span>
-              <article className="ProjectHeading" style={{ marginTop: '0.2rem', fontSize: '1.45rem', fontWeight: '700', color: '#1c1917' }}>{project.title}</article>
+              <article className="ProjectHeading" style={{ marginTop: '0.2rem', fontSize: '1.45rem', fontWeight: '700', color: '#ffffff' }}>{project.title}</article>
             </div>
           </div>
-          <p className="ProjectDescription" style={{ fontSize: '1rem', lineHeight: '1.6', color: '#334155', fontWeight: '450' }}>{project.description}</p>
+          <p className="ProjectDescription" style={{ fontSize: '1rem', lineHeight: '1.6', color: '#cbd5e1', fontWeight: '450' }}>{project.description}</p>
           <div className="project-buttons" style={{ marginTop: '1.25rem' }}>
             {project.isExternal ? (
               <a 

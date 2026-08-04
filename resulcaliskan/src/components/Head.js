@@ -8,7 +8,7 @@ const Head = () => {
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="robots" content="index, follow" />
-      <meta name="theme-color" content="#f5f0eb" />
+      <meta name="theme-color" content="#080c14" />
       <meta
         name="description"
         content="Resul Çalışkan — Software developer. Notes on software, tech, and building things."
