@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiGrid, FiPlayCircle, FiZap, FiCode } from 'react-icons/fi';
+import { FiGrid, FiPlayCircle, FiZap, FiCode, FiClock } from 'react-icons/fi';
 import { FaGamepad } from 'react-icons/fa6';
 import { projectsData } from '../data/projectsData';
 import { ProjectCard } from '../components/projects/ProjectCard';
@@ -18,6 +18,7 @@ export const Projects: React.FC = () => {
     Icon: React.ComponentType<{ className?: string }>;
   }[] = [
     { id: 'all', labelTr: 'Tümü', labelEn: 'All Projects', Icon: FiGrid as any },
+    { id: 'in_progress', labelTr: 'Geliştirilmekte (In Progress)', labelEn: 'In Progress', Icon: FiClock as any },
     { id: 'live', labelTr: 'Canlıda (Google Play)', labelEn: 'Live Apps', Icon: FiPlayCircle as any },
     { id: 'games', labelTr: 'Mobil Oyunlar', labelEn: 'Games', Icon: FaGamepad as any },
     { id: 'ai_web', labelTr: 'Yapay Zekâ & Web', labelEn: 'AI & Web', Icon: FiZap as any },

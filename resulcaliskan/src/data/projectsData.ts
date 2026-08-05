@@ -2,11 +2,46 @@ import { Project } from '../types/projectTypes';
 
 export const projectsData: Project[] = [
   {
+    id: 'hudhud',
+    title: 'HudHud',
+    category: ['in_progress', 'ai_web'],
+    featured: true,
+    isInProgress: true,
+    statusBadge: {
+      tr: 'Geliştirme Aşamasında (Özel / Private)',
+      en: 'In Progress (Private)',
+    },
+    description: {
+      tr: "HudHud, klasik 'araştır ve özetle' araçlarının ötesine geçerek bir konu etrafındaki web bilgi ekosistemini haritalandıran ve sentezleyen yeni nesil araştırma platformudur. Amaç yalnızca kaynakları özetlemek değil; bilginin web üzerinde nasıl temsil edildiğini, çelişkilerini ve eksik noktalarını görünür kılmaktır.",
+      en: "HudHud is a next-generation research platform that moves beyond generic summary tools by mapping and synthesizing how knowledge about a topic exists across the web ecosystem. Instead of merely summarizing sources, it aims to uncover consensus, conflicts, and knowledge gaps.",
+    },
+    features: {
+      tr: [
+        'Ortak Görüşler (Consensus) ve Çelişen Bilgiler (Conflicts) haritalaması',
+        'Eksik veya az bahsedilen kritik noktaların (Knowledge Gaps) tespiti',
+        'Kaynak güvenilirliği, çeşitliliği ve tekrarlayan argüman analizi',
+        'Tekil kaynaklarda geçen benzersiz içgörülerin (Unique Insights) sentezi',
+      ],
+      en: [
+        'Consensus mapping & conflict detection across diverse web sources',
+        'Knowledge gap analysis & unearthing under-represented insights',
+        'Source credibility, repetition frequency, and argument synthesis',
+        'Multi-layered knowledge ecosystem representation',
+      ],
+    },
+    tags: ['AI Knowledge Synthesis', 'Web Ecosystem Analysis', 'Research Engine', 'Private R&D'],
+    links: {},
+  },
+  {
     id: 'ballgorithm',
     title: 'Ballgorithm',
     category: ['live', 'games'],
     featured: true,
     isLive: true,
+    statusBadge: {
+      tr: 'Canlıda (Google Play)',
+      en: 'Live on Google Play',
+    },
     icon: '/projects/ballgorithm.png',
     coverImage: '/projects/kabadayi_cover.png',
     description: {
@@ -39,6 +74,10 @@ export const projectsData: Project[] = [
     category: ['live', 'ai_web', 'open_source'],
     featured: true,
     isLive: true,
+    statusBadge: {
+      tr: 'Canlıda (Google Play)',
+      en: 'Live on Google Play',
+    },
     icon: '/projects/paper2quiz.png',
     description: {
       tr: "Ders ve sınav PDF'lerini interaktif quiz'lere, flashcard'lara ve adım adım AI öğretmen oturumlarına dönüştüren yapay zekâ destekli öğrenme platformu.",
