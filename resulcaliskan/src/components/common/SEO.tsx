@@ -43,6 +43,8 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="keywords" content={keywords.join(', ')} />
       <meta name="author" content={authorName} />
       <meta name="robots" content="index, follow" />
+      <meta name="google-site-verification" content="VE87RYhDmOrTAK-gSc7OYtHj-UoqDUU38tup-QRKz_k" />
+      <meta name="google-site-verification" content="YntybbHfKdmeTPFm2fSYLFbCodicpjF9lFbRyzEQl7A" />
 
       {/* Canonical URL */}
       <link rel="canonical" href={fullUrl} />
