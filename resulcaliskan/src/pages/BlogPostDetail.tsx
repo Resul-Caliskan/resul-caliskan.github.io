@@ -1,11 +1,14 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { FiArrowLeft } from 'react-icons/fi';
 import { blogRepository } from '../services/blogRepository';
 import { BlogHeader } from '../components/blog/BlogHeader';
 import { TableOfContents } from '../components/blog/TableOfContents';
 import { BlogContentRenderer } from '../components/blog/BlogContentRenderer';
 import { SEO } from '../components/common/SEO';
+
+const ArrowLeftIcon = FiArrowLeft as any;
 
 export const BlogPostDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -19,7 +22,7 @@ export const BlogPostDetail: React.FC = () => {
           <h1 className="profile-headline">{t('post_not_found')}</h1>
           <p className="profile-bio-paragraph">{t('post_not_found_desc')}</p>
           <Link to="/blog" className="blog-back-link">
-            ← {t('back_to_all_posts')}
+            <ArrowLeftIcon className="blog-back-arrow-icon" /> {t('back_to_all_posts')}
           </Link>
         </div>
       </main>
@@ -82,7 +85,7 @@ export const BlogPostDetail: React.FC = () => {
 
           <footer className="blog-detail-footer">
             <Link to="/blog" className="blog-back-link">
-              ← {t('back_to_all_posts')}
+              <ArrowLeftIcon className="blog-back-arrow-icon" /> {t('back_to_all_posts')}
             </Link>
           </footer>
         </div>

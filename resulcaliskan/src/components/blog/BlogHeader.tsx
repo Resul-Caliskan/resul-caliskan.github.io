@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { FiArrowLeft } from 'react-icons/fi';
 import { BlogPostMeta } from '../../types/blogTypes';
 import { profileData } from '../../data/profileData';
+
+const ArrowLeftIcon = FiArrowLeft as any;
 
 interface BlogHeaderProps {
   post: BlogPostMeta;
@@ -14,7 +17,7 @@ export const BlogHeader: React.FC<BlogHeaderProps> = ({ post }) => {
   return (
     <header className="blog-detail-header">
       <Link to="/blog" className="blog-back-link">
-        <span className="blog-back-arrow">←</span> {t('back_to_blog')}
+        <ArrowLeftIcon className="blog-back-arrow-icon" /> {t('back_to_blog')}
       </Link>
 
       <h1 className="blog-detail-title">{post.title}</h1>
