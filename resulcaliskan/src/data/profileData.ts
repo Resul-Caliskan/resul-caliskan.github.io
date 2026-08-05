@@ -21,17 +21,17 @@ export const profileData: ProfileData = {
     {
       id: "twitter",
       name: "Twitter / X",
-      url: "https://twitter.com/resulcaliskan",
+      url: "https://x.com/caliskan_Ressul",
     },
     {
       id: "github",
       name: "GitHub",
-      url: "https://github.com/resulcaliskan",
+      url: "https://github.com/resul-caliskan",
     },
     {
       id: "linkedin",
       name: "LinkedIn",
-      url: "https://linkedin.com/in/resulcaliskan",
+      url: "https://linkedin.com/in/resul-caliskan",
     },
   ],
   navItems: [
