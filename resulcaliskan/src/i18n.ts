@@ -11,9 +11,14 @@ const resources = {
       nav_projects: "projeler",
       nav_blog: "blog",
       projects_title: "Projeler",
-      projects_desc: "Geliştirdiğim açık kaynaklı projeler ve ürün çalışmaları yakında burada detaylı şekilde listelenecektir.",
+      projects_desc: "Geliştirdiğim açık kaynaklı projeler ve ürün çalışmaları.",
       blog_title: "Blog",
-      blog_desc: "Teknoloji, yazılım mimarileri ve deneyimlerim üzerine kaleme aldığım yazılar yakında burada yayınlanacak.",
+      blog_desc: "Teknoloji, yazılım mimarileri, kavramsal tasarım ve deneyimlerim üzerine yazılarım.",
+      toc_title: "İçindekiler",
+      back_to_blog: "Blog'a Dön",
+      back_to_all_posts: "Tüm Yazılara Dön",
+      post_not_found: "Yazı Bulunamadı",
+      post_not_found_desc: "Aradığınız blog yazısı mevcut değil veya kaldırılmış olabilir.",
       lang_tr: "TR",
       lang_en: "EN"
     }
@@ -26,9 +31,14 @@ const resources = {
       nav_projects: "projects",
       nav_blog: "blog",
       projects_title: "Projects",
-      projects_desc: "My open-source projects and product work will be listed here in detail soon.",
+      projects_desc: "My open-source projects and product work.",
       blog_title: "Blog",
-      blog_desc: "My articles on technology, software architecture, and personal experiences will be published here soon.",
+      blog_desc: "My articles on technology, software architecture, conceptual design, and personal experiences.",
+      toc_title: "On this page",
+      back_to_blog: "Back to Blog",
+      back_to_all_posts: "Back to All Posts",
+      post_not_found: "Post Not Found",
+      post_not_found_desc: "The article you are looking for does not exist or may have been removed.",
       lang_tr: "TR",
       lang_en: "EN"
     }

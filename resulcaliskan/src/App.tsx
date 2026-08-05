@@ -4,6 +4,7 @@ import { StevenNavbar } from './components/steven/StevenNavbar';
 import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
 import { Blog } from './pages/Blog';
+import { BlogPostDetail } from './pages/BlogPostDetail';
 import { profileData } from './data/profileData';
 import './index.css';
 
@@ -16,6 +17,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/projeler" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPostDetail />} />
         </Routes>
       </div>
     </Router>
