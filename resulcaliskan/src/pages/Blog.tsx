@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { blogRepository } from '../services/blogRepository';
 
 export const Blog: React.FC = () => {
-  const { t } = useTranslation();
-  const posts = blogRepository.getAllPosts();
+  const { t, i18n } = useTranslation();
+  const posts = blogRepository.getAllPosts(i18n.language);
 
   return (
     <main className="steven-main-layout">

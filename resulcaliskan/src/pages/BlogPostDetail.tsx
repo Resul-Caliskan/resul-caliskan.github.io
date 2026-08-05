@@ -8,8 +8,8 @@ import { BlogContentRenderer } from '../components/blog/BlogContentRenderer';
 
 export const BlogPostDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { t } = useTranslation();
-  const post = slug ? blogRepository.getPostBySlug(slug) : undefined;
+  const { t, i18n } = useTranslation();
+  const post = slug ? blogRepository.getPostBySlug(slug, i18n.language) : undefined;
 
   if (!post) {
     return (

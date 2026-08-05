@@ -16,12 +16,12 @@ export const slugifyHeader = (text: string): string => {
     .replace(/^-+|-+$/g, '');
 };
 
-// SRP: Calculate Reading Time
-export const calculateReadingTime = (content: string): string => {
+// SRP: Calculate Reading Time according to language
+export const calculateReadingTime = (content: string, lang: string = 'tr'): string => {
   const wordsPerMinute = 200;
   const words = content.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
-  return `${minutes} dk okuma`;
+  return lang.startsWith('en') ? `${minutes} min read` : `${minutes} dk okuma`;
 };
 
 // SRP: Extract Table of Contents from Markdown content
@@ -40,26 +40,37 @@ export const extractToc = (content: string): TocItem[] => {
   return toc;
 };
 
-// Dynamic require context for markdown files in src/data/blogs using raw-loader
-const blogContext = (require as any).context('!!raw-loader!../data/blogs', false, /\.md$/);
+// Require contexts for Turkish and English markdown files
+const trContext = (require as any).context('!!raw-loader!../data/blogs/tr', false, /\.md$/);
+const enContext = (require as any).context('!!raw-loader!../data/blogs/en', false, /\.md$/);
 
 class BlogRepository {
-  private postsCache: BlogPost[] | null = null;
+  private cache: Record<string, BlogPost[]> = {};
 
-  private loadPosts(): BlogPost[] {
-    if (this.postsCache) {
-      return this.postsCache;
+  private loadPostsForLang(lang: string): BlogPost[] {
+    const normalizedLang = lang.startsWith('en') ? 'en' : 'tr';
+    if (this.cache[normalizedLang]) {
+      return this.cache[normalizedLang];
     }
 
-    const keys: string[] = blogContext.keys();
+    const context = normalizedLang === 'en' ? enContext : trContext;
+    const fallbackContext = trContext;
+
+    const keys: string[] = context.keys();
 
     const posts: BlogPost[] = keys.map((key) => {
-      const rawContent: string = blogContext(key).default || blogContext(key);
-      const { data, content } = matter(rawContent);
+      let rawContent: string;
+      try {
+        const mod = context(key);
+        rawContent = typeof mod === 'string' ? mod : (mod.default || String(mod));
+      } catch (e) {
+        const mod = fallbackContext(key);
+        rawContent = typeof mod === 'string' ? mod : (mod.default || String(mod));
+      }
 
-      // Extract slug from filename: './kavramsal-tasarim.md' => 'kavramsal-tasarim'
+      const { data, content } = matter(rawContent);
       const slug = key.replace(/^\.\//, '').replace(/\.md$/, '');
-      const readingTime = calculateReadingTime(content);
+      const readingTime = calculateReadingTime(content, normalizedLang);
       const toc = extractToc(content);
 
       return {
@@ -76,16 +87,16 @@ class BlogRepository {
 
     // Sort by date descending
     posts.sort((a, b) => (a.date > b.date ? -1 : 1));
-    this.postsCache = posts;
+    this.cache[normalizedLang] = posts;
     return posts;
   }
 
-  public getAllPosts(): BlogPostMeta[] {
-    return this.loadPosts().map(({ content, toc, ...meta }) => meta);
+  public getAllPosts(lang: string = 'tr'): BlogPostMeta[] {
+    return this.loadPostsForLang(lang).map(({ content, toc, ...meta }) => meta);
   }
 
-  public getPostBySlug(slug: string): BlogPost | undefined {
-    return this.loadPosts().find((post) => post.slug === slug);
+  public getPostBySlug(slug: string, lang: string = 'tr'): BlogPost | undefined {
+    return this.loadPostsForLang(lang).find((post) => post.slug === slug);
   }
 }
 
